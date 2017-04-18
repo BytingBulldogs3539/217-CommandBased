@@ -74,6 +74,12 @@ public class Shooting extends PIDSubsystem
     {
     	
     }
+    
+	public void disableHoodPid()
+	{
+		this.getPIDController().disable();
+		setFlyWheelPower(0);
+	}
 
     protected double returnPIDInput() 
     {
