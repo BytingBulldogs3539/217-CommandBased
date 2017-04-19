@@ -59,7 +59,10 @@ public class Turret extends PIDSubsystem
     {
     	turretMotor.set(output);
     }
-    
+    protected boolean OnTaget()
+    {
+    	return this.getPIDController().onTarget();
+    }
     
     
     @SuppressWarnings("deprecation")

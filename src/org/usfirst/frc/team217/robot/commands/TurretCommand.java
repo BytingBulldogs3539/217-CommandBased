@@ -28,7 +28,7 @@ public class TurretCommand extends Command {
 
     protected boolean isFinished() 
     {
-        return false;
+        return Robot.Turret.onTarget();
     }
 
     protected void end() 

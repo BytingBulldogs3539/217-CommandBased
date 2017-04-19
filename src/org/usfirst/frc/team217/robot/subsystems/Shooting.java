@@ -70,6 +70,11 @@ public class Shooting extends PIDSubsystem
     	this.setSetpoint(RPM);
     }
     
+    public int getShooterRPM()
+    {
+    	return flyWheel.getPulseWidthVelocity();
+    }
+    
     public void initDefaultCommand() 
     {
     	

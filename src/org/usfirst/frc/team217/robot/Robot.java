@@ -24,9 +24,8 @@ import org.usfirst.frc.team217.robot.commands.*;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
-
-//	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+public class Robot extends IterativeRobot 
+{
 	public static final RaspberryPi RaspberryPi = new RaspberryPi();
 	public static final RobotMap RobotMap = new RobotMap();
 	public static final Turret Turret = new Turret();
@@ -72,17 +71,6 @@ public class Robot extends IterativeRobot {
 		Update();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	@Override
 	public void autonomousInit() 
 	{
@@ -109,10 +97,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		Update();
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
