@@ -34,6 +34,12 @@ public class RobotMap {
 	public static final int hoodENC = 1;
 	public static final int flyWheel1 = 10;
 	public static final int flyWheel2 = 11;
+	public static final int RBMotor = 15;
+	public static final int RFMotor = 14;
+	public static final int LFMotor = 1;
+	public static final int LBMotor = 0;
+	
+	
 	
 	
 	

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team217.robot.subsystems.*;
+import org.usfirst.frc.team217.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team217.robot.commands.*;
 
 
@@ -26,6 +27,7 @@ import org.usfirst.frc.team217.robot.commands.*;
  */
 public class Robot extends IterativeRobot 
 {
+	public static final DriveTrain DriveTrain = new DriveTrain();
 	public static final RaspberryPi RaspberryPi = new RaspberryPi();
 	public static final RobotMap RobotMap = new RobotMap();
 	public static final Turret Turret = new Turret();

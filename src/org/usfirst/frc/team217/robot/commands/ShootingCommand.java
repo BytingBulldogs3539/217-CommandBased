@@ -16,12 +16,14 @@ public class ShootingCommand extends Command {
     	
     }
 
-    protected void initialize() 
+    @SuppressWarnings("deprecation")
+	protected void initialize() 
     {
     	Robot.Shooting.setShooterRPM(SmartDashboard.getDouble("Shooter Set RPM"));
     }
 
-    protected void execute() 
+    @SuppressWarnings("deprecation")
+	protected void execute() 
     {
     	if (Robot.Shooting.getShooterRPM() >= SmartDashboard.getDouble("Shooter Set RPM")*.9)
     	{
