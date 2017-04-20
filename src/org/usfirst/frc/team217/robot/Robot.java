@@ -1,6 +1,10 @@
 
 package org.usfirst.frc.team217.robot;
 
+import org.usfirst.frc.team217.robot.subsystems.RaspberryPi;
+import org.usfirst.frc.team217.robot.subsystems.Turret;
+import org.usfirst.frc.team217.robot.subsystems.Shooting;
+
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -10,8 +14,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team217.robot.subsystems.*;
-import org.usfirst.frc.team217.robot.commands.*;
 
 
 //import org.usfirst.frc.team217.robot.commands.ExampleCommand;
@@ -30,6 +32,7 @@ public class Robot extends IterativeRobot
 	public static final RobotMap RobotMap = new RobotMap();
 	public static final Turret Turret = new Turret();
 	public static final Shooting Shooting = new Shooting();
+	
 	public static OI oi;	
 
 	Command autonomousCommand;
