@@ -175,5 +175,10 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     	SmartDashboard.putDouble("Distance Adjustment", RobotMap.DistanceAdjust);
     }
+	public void setVPercentBus() 
+	{
+		RBMotor.changeControlMode(TalonControlMode.PercentVbus);
+		LBMotor.changeControlMode(TalonControlMode.PercentVbus);
+	}
 }
 

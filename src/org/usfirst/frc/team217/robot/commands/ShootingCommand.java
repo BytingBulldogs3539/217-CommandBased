@@ -34,7 +34,7 @@ public class ShootingCommand extends Command {
 
     protected boolean isFinished() 
     {
-        return false;
+        return !Robot.OI.operbuttonTringle.get();
     }
 
     protected void end() 

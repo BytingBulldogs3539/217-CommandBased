@@ -38,6 +38,12 @@ public class RobotMap {
 	public static int controllerOnePort = 0;
 	public static int controllerTwoPort = 1;
 	
+	public static final int X_AxisL = 0;
+	public static final int Y_AxisL = 1;
+	
+	public static final int X_AxisR = 4;
+	public static final int Y_AxisR = 5;
+	
 	
 	// Talons
 	
