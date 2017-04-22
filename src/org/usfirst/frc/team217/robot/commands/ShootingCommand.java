@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team217.robot.Robot;
-import org.usfirst.frc.team217.robot.subsystems.*;
 
 /**
  *

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team217.robot;
 
-import com.ctre.CANTalon;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -25,6 +23,18 @@ public class RobotMap {
 	public static double hoodP = 0;
 	public static double hoodI = 0;
 	public static double hoodD = 0;
+	
+	public static double DriveF = 0;
+	public static double DriveP = 0;
+	public static double DriveI = 0;
+	public static double DriveD = 0;
+	
+	public static double turnF = 0;
+	public static double turnP = 0;
+	public static double turnI = 0;
+	public static double turnD = 0;
+
+	
 	public static int controllerOnePort = 0;
 	public static int controllerTwoPort = 1;
 	
@@ -51,9 +61,9 @@ public class RobotMap {
 	public static final int LFMotor = 1;
 	public static final int LBMotor = 0;
 	
-	
-	
-	//CANTalon rightMaster, rightSlave, leftMaster, leftSlave;
+	//DriveTrain
+	public static final double DistanceAdjust = 1;
+
 
 	
 	

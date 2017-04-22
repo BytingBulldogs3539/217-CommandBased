@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,6 +20,8 @@ public class DriveTrain extends Subsystem {
 	CANTalon RBMotor,LBMotor,RFMotor,LFMotor;
 	Solenoid BackSolenoid, FrontSolenoid;
 	private RobotDrive drive;
+	
+	ADXRS450_Gyro Gyro;
 
 	public DriveTrain()
 	{
@@ -62,12 +65,44 @@ public class DriveTrain extends Subsystem {
 		BackSolenoid = new Solenoid(1);
 		FrontSolenoid = new Solenoid(2);
 		
+		Gyro = new ADXRS450_Gyro();
+		
+		
 		
 	}
 	public double getAverageEncoders()
 	{
 		return (RBMotor.getPosition()+LBMotor.getPosition())/2;
 	}
+	@SuppressWarnings("deprecation")
+	public double getAverageEncodersInInches()
+	{
+		return ((getAverageEncoders()/4098)*Math.PI)*SmartDashboard.getDouble("Distance Adjustment");
+	}
+	
+	public double getGyroAngle()
+	{
+		return Gyro.getAngle();
+	}
+	
+	public void driveArcade(double speed, double turnSpeed)
+	{
+		drive.arcadeDrive(speed, turnSpeed);
+	}
+	
+	public void stopDriveTrain()
+	{
+		RBMotor.changeControlMode(TalonControlMode.PercentVbus);
+		LBMotor.changeControlMode(TalonControlMode.PercentVbus);
+		RBMotor.set(0);
+		LBMotor.set(0);
+	}
+	
+	public void zeroGyro()
+	{
+		Gyro.reset();
+	}
+	
 	public void frontOmni()
 	{
 		BackSolenoid.set(false);
@@ -84,6 +119,12 @@ public class DriveTrain extends Subsystem {
 		FrontSolenoid.set(true);
 	}
 	
+	public void zeroEncoders()
+	{
+		RBMotor.setEncPosition(0);
+		LBMotor.setEncPosition(0);
+	}
+	
 	public void driveLinear(double speed)
 	{
 		drive.tankDrive(speed, speed);
@@ -91,7 +132,7 @@ public class DriveTrain extends Subsystem {
 	
 	public void turnLinear(double speed)
 	{
-		drive.tankDrive(-speed, speed);		
+		drive.tankDrive(-speed, speed);
 	}
     public void initDefaultCommand() 
     {
@@ -116,7 +157,8 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     	
     }
-    public void SmartInit()
+    @SuppressWarnings("deprecation")
+	public void SmartInit()
     {
     	//SmartDashboard.putDouble("EX", EX)
     	SmartDashboard.putDouble("RBMotor Talon Temp", RBMotor.getTemperature());
@@ -131,6 +173,7 @@ public class DriveTrain extends Subsystem {
     	
     	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getPosition());
     	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
+    	SmartDashboard.putDouble("Distance Adjustment", RobotMap.DistanceAdjust);
     }
 }
 
