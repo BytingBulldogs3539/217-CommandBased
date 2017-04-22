@@ -27,12 +27,13 @@ import org.usfirst.frc.team217.robot.commands.*;
  */
 public class Robot extends IterativeRobot 
 {
+	public static final RobotMap RobotMap = new RobotMap();
 	public static final DriveTrain DriveTrain = new DriveTrain();
 	public static final RaspberryPi RaspberryPi = new RaspberryPi();
-	public static final RobotMap RobotMap = new RobotMap();
 	public static final Turret Turret = new Turret();
 	public static final Shooting Shooting = new Shooting();
-	public static OI oi;	
+	public static final Climber Climber = new Climber();
+	public static OI OI;	
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -46,7 +47,7 @@ public class Robot extends IterativeRobot
 	{
 		SmartInit();
 		Update();
-		oi = new OI();
+		OI = new OI();
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		UsbCamera camera1;
@@ -125,9 +126,16 @@ public class Robot extends IterativeRobot
 	{
 		Turret.Update();
 		Shooting.Update();
+		
+		SmartDashboard.putData(Shooting);
+		SmartDashboard.putData(Turret);
+		SmartDashboard.putData(Shooting);
+		SmartDashboard.putData(DriveTrain);
+		SmartDashboard.putData(Climber);
 	}
 	public void SmartInit()
 	{
 		Turret.SmartInit();
+		Shooting.SmartInit();
 	}
 }

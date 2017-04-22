@@ -4,15 +4,21 @@ import org.usfirst.frc.team217.robot.RobotMap;
 import org.usfirst.frc.team217.robot.commands.DriveCommand;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class DriveTrain extends Subsystem {
 	CANTalon RBMotor,LBMotor,RFMotor,LFMotor;
+	Solenoid BackSolenoid, FrontSolenoid;
+	private RobotDrive drive;
 
 	public DriveTrain()
 	{
@@ -26,33 +32,105 @@ public class DriveTrain extends Subsystem {
 		RFMotor.changeControlMode(TalonControlMode.Follower);
 		LFMotor.changeControlMode(TalonControlMode.Follower);
 		
+		RBMotor.set(RFMotor.getDeviceID());
+		LBMotor.set(LFMotor.getDeviceID());
+		
 		RBMotor.changeControlMode(TalonControlMode.PercentVbus);
 		LBMotor.changeControlMode(TalonControlMode.PercentVbus);
+		
+		LBMotor.setCurrentLimit(38);
+		RBMotor.setCurrentLimit(38);
+		
+		LBMotor.configNominalOutputVoltage(0.0f, -0.0f);
+		LBMotor.configPeakOutputVoltage(12.0f, -12.0f);
+		
+		RBMotor.configNominalOutputVoltage(0.0f, -0.0f);
+		RBMotor.configPeakOutputVoltage(12, -12);
 		
 		RBMotor.configMaxOutputVoltage(12);
 		LBMotor.configMaxOutputVoltage(12);
 		
-		RBMotor.set(RFMotor.getDeviceID());
-		LBMotor.set(LFMotor.getDeviceID());
+		LBMotor.enableBrakeMode(true);
+		RBMotor.enableBrakeMode(true);
 		
 		RBMotor.EnableCurrentLimit(true);
 		LBMotor.EnableCurrentLimit(true);
+		
+		RBMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		LBMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		
+		BackSolenoid = new Solenoid(1);
+		FrontSolenoid = new Solenoid(2);
+		
+		
 	}
-
+	public double getAverageEncoders()
+	{
+		return (RBMotor.getPosition()+LBMotor.getPosition())/2;
+	}
+	public void frontOmni()
+	{
+		BackSolenoid.set(false);
+		FrontSolenoid.set(true);
+	}
+	public void backOmni()
+	{
+		FrontSolenoid.set(false);
+		BackSolenoid.set(true);
+	}
+	public void bothOmni()
+	{
+		BackSolenoid.set(true);
+		FrontSolenoid.set(true);
+	}
+	
+	public void driveLinear(double speed)
+	{
+		drive.tankDrive(speed, speed);
+	}
+	
+	public void turnLinear(double speed)
+	{
+		drive.tankDrive(-speed, speed);		
+	}
     public void initDefaultCommand() 
     {
     	setDefaultCommand(new DriveCommand());
     }
     
-    
-    public void Update()
+    @SuppressWarnings("deprecation")
+	public void Update()
     {
     	//SmartDashboard.putDouble("EX", EX)
+    	SmartDashboard.putDouble("RBMotor Talon Temp", RBMotor.getTemperature());
+    	SmartDashboard.putDouble("LBMotor Talon Temp", LBMotor.getTemperature());
+    	SmartDashboard.putDouble("RFMotor Talon Temp", RFMotor.getTemperature());
+    	SmartDashboard.putDouble("LFMotor Talon Temp", LFMotor.getTemperature());
+    	
+    	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("RFMotor Talon Current", RFMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("LFMotor Talon Current", LFMotor.getOutputCurrent());
+    	
+    	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getPosition());
+    	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     	
     }
     public void SmartInit()
     {
+    	//SmartDashboard.putDouble("EX", EX)
+    	SmartDashboard.putDouble("RBMotor Talon Temp", RBMotor.getTemperature());
+    	SmartDashboard.putDouble("LBMotor Talon Temp", LBMotor.getTemperature());
+    	SmartDashboard.putDouble("RFMotor Talon Temp", RFMotor.getTemperature());
+    	SmartDashboard.putDouble("LFMotor Talon Temp", LFMotor.getTemperature());
     	
+    	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("RFMotor Talon Current", RFMotor.getOutputCurrent());
+    	SmartDashboard.putDouble("LFMotor Talon Current", LFMotor.getOutputCurrent());
+    	
+    	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getPosition());
+    	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     }
 }
 

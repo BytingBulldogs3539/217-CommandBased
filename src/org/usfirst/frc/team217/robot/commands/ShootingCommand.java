@@ -13,7 +13,7 @@ public class ShootingCommand extends Command {
 
     public ShootingCommand() 
     {
-    	
+    	requires(Robot.Shooting);
     }
 
     @SuppressWarnings("deprecation")

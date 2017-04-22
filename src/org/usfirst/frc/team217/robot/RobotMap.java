@@ -25,6 +25,8 @@ public class RobotMap {
 	public static double hoodP = 0;
 	public static double hoodI = 0;
 	public static double hoodD = 0;
+	public static int controllerOnePort = 0;
+	public static int controllerTwoPort = 1;
 	
 	
 	// Talons
