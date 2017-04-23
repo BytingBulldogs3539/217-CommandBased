@@ -8,28 +8,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearUp extends Command {
+public class GearDown extends Command {
 
-    public GearUp() 
+    public GearDown() 
     {
     	requires(Robot.Gearing);
     }
 
     protected void initialize() 
     {
-    	Robot.Gearing.setGearPos(RobotMap.GearArmup);
+    	Robot.Gearing.setGearPos(RobotMap.GearArmDown);
     }
 
-    protected void execute() 
-    {
-    	
+    protected void execute() {
     }
 
     protected boolean isFinished() 
     {
-        return Robot.Gearing.onTarget() || Robot.OI.operButtonSquare.get();
+    	return Robot.Gearing.onTarget() || Robot.OI.operButtonSquare.get();
     }
-    
+
     protected void end() 
     {
     	Robot.Gearing.disableGearArmPID();

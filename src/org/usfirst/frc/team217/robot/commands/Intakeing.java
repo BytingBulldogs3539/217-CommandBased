@@ -8,31 +8,31 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearUp extends Command {
+public class Intakeing extends Command {
+	
 
-    public GearUp() 
+    public Intakeing() 
     {
-    	requires(Robot.Gearing);
+    	requires(Robot.Intake);
     }
 
     protected void initialize() 
     {
-    	Robot.Gearing.setGearPos(RobotMap.GearArmup);
+    	
     }
-
     protected void execute() 
     {
-    	
+    	Robot.Intake.setIntakePower(Robot.OI.oper.getRawAxis(RobotMap.X_AxisR));
     }
 
     protected boolean isFinished() 
     {
-        return Robot.Gearing.onTarget() || Robot.OI.operButtonSquare.get();
+        return false;
     }
-    
+
     protected void end() 
     {
-    	Robot.Gearing.disableGearArmPID();
+    	Robot.Intake.setIntakePower(0);
     }
 
     protected void interrupted() 

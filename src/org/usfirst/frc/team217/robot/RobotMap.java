@@ -71,6 +71,8 @@ public class RobotMap {
 	public static final int RFMotor = 14;
 	public static final int LFMotor = 1;
 	public static final int LBMotor = 0;
+	//
+	public static final int Intake = 13;
 	
 	//Gearing
 	public static final int GearArm = 8;
@@ -81,6 +83,8 @@ public class RobotMap {
 	
 	
 	public static final int GearArmup = 0;
+	public static final int GearArmDown = 0;
+	
 	
 
 

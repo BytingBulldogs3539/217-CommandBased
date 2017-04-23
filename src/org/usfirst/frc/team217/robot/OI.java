@@ -1,6 +1,7 @@
 package org.usfirst.frc.team217.robot;
 
 import org.usfirst.frc.team217.robot.commands.Climbing;
+import org.usfirst.frc.team217.robot.commands.GearUp;
 import org.usfirst.frc.team217.robot.commands.ShootingCommand;
 import org.usfirst.frc.team217.robot.commands.TurretCommand;
 
@@ -32,6 +33,7 @@ public class OI
 		//Operator
 		operButtonTringle.whenPressed(new ShootingCommand());
 		operButtonTouch.whenPressed(new TurretCommand());
+		operButtonSquare.whenPressed(new GearUp());
 		
 		//Driver
 		driverBumperLeft.whenPressed(new Climbing());
