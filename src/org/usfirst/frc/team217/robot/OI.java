@@ -2,6 +2,8 @@ package org.usfirst.frc.team217.robot;
 
 import org.usfirst.frc.team217.robot.commands.Climbing;
 import org.usfirst.frc.team217.robot.commands.GearUp;
+import org.usfirst.frc.team217.robot.commands.GrabGear;
+import org.usfirst.frc.team217.robot.commands.ReleaseGear;
 import org.usfirst.frc.team217.robot.commands.ShootingCommand;
 import org.usfirst.frc.team217.robot.commands.TurretCommand;
 
@@ -24,6 +26,8 @@ public class OI
 	public JoystickButton operButtonCircle = new JoystickButton(oper, 3);
 	public JoystickButton operButtonTringle = new JoystickButton(oper,4);
 	public JoystickButton operButtonTouch = new JoystickButton(oper, 14);
+	public JoystickButton operBumperLeft = new JoystickButton(oper, 5);
+	public JoystickButton operTriggerLeft = new JoystickButton(oper, 7);
 	
 	public JoystickButton driverBumperLeft = new JoystickButton(driver,5);
 	
@@ -34,6 +38,11 @@ public class OI
 		operButtonTringle.whenPressed(new ShootingCommand());
 		operButtonTouch.whenPressed(new TurretCommand());
 		operButtonSquare.whenPressed(new GearUp());
+		operBumperLeft.whenPressed(new GrabGear());
+		operTriggerLeft.whenPressed(new ReleaseGear());
+		
+		
+		
 		
 		//Driver
 		driverBumperLeft.whenPressed(new Climbing());
