@@ -33,6 +33,11 @@ public class RobotMap {
 	public static double turnP = 0;
 	public static double turnI = 0;
 	public static double turnD = 0;
+	
+	public static double GearArmP = 0;
+	public static double GearArmI = 0;
+	public static double GearArmD = 0;
+	public static double GearArmF = 0;
 
 	
 	public static int controllerOnePort = 0;
@@ -67,8 +72,17 @@ public class RobotMap {
 	public static final int LFMotor = 1;
 	public static final int LBMotor = 0;
 	
+	//Gearing
+	public static final int GearArm = 8;
+	public static final int GearIntake = 7;
+	
 	//DriveTrain
 	public static final double DistanceAdjust = 1;
+	
+	
+	public static final int GearArmup = 0;
+	
+
 
 
 	

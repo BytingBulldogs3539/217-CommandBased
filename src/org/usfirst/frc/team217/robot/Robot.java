@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot
 	public static final Turret Turret = new Turret();
 	public static final Shooting Shooting = new Shooting();
 	public static final Climber Climber = new Climber();
+	public static final Gearing Gearing = new Gearing();
 	public static OI OI;	
 
 	Command autonomousCommand;
