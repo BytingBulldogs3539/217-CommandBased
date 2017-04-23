@@ -28,7 +28,7 @@ public class TurretCommand extends Command {
 
     protected boolean isFinished() 
     {
-        return Robot.Turret.onTarget();
+        return Robot.Turret.onTarget() || !Robot.OI.operButtonTouch.get();
     }
 
     protected void end() 

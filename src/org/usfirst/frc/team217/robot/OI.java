@@ -1,6 +1,8 @@
 package org.usfirst.frc.team217.robot;
 
+import org.usfirst.frc.team217.robot.commands.Climbing;
 import org.usfirst.frc.team217.robot.commands.ShootingCommand;
+import org.usfirst.frc.team217.robot.commands.TurretCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -19,14 +21,19 @@ public class OI
 	public JoystickButton operButtonX = new JoystickButton(oper,2);
 	public JoystickButton operButtonSquare = new JoystickButton(oper,1);
 	public JoystickButton operButtonCircle = new JoystickButton(oper, 3);
-	public JoystickButton operbuttonTringle = new JoystickButton(oper,4);
+	public JoystickButton operButtonTringle = new JoystickButton(oper,4);
+	public JoystickButton operButtonTouch = new JoystickButton(oper, 14);
 	
-	public JoystickButton driverBumperLeft = new JoystickButton
+	public JoystickButton driverBumperLeft = new JoystickButton(driver,5);
 	
 	
-
 	public OI()
 	{
-		operbuttonTringle.whenPressed(new ShootingCommand());
+		//Operator
+		operButtonTringle.whenPressed(new ShootingCommand());
+		operButtonTouch.whenPressed(new TurretCommand());
+		
+		//Driver
+		driverBumperLeft.whenPressed(new Climbing());
 	}
 }
