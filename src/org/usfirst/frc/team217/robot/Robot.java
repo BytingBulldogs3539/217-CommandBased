@@ -79,6 +79,10 @@ public class Robot extends IterativeRobot
 	public void autonomousInit() 
 	{
 		Update();
+		Robot.DriveTrain.zeroEncoders();
+		Robot.DriveTrain.calGyro();
+		Robot.DriveTrain.zeroGyro();
+		
 		autonomousCommand = chooser.getSelected();
 
 

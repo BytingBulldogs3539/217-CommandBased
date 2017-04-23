@@ -29,7 +29,7 @@ public class Turret extends PIDSubsystem
 	}
 	public void setTurretAngle()
 	{
-		this.getPIDController().setPID(this.turretMotorF,this.turretMotorP,this.turretMotorI,this.turretMotorD);
+		this.getPIDController().setPID(this.turretMotorP,this.turretMotorI,this.turretMotorD,this.turretMotorF);
 		this.getPIDController().enable();
 		this.setSetpoint(0);
 	}

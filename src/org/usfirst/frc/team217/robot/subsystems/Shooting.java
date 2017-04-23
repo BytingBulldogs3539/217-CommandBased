@@ -65,7 +65,7 @@ public class Shooting extends PIDSubsystem
     }
     public void setShooterRPM(double RPM)
     {
-    	this.getPIDController().setPID(shooterF, shooterP, shooterI, shooterD);
+    	this.getPIDController().setPID(shooterP, shooterI, shooterD, shooterF);
     	this.getPIDController().enable();
     	this.setSetpoint(RPM);
     }

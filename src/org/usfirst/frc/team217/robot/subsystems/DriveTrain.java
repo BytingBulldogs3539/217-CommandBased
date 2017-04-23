@@ -125,15 +125,6 @@ public class DriveTrain extends Subsystem {
 		LBMotor.setEncPosition(0);
 	}
 	
-	public void driveLinear(double speed)
-	{
-		drive.tankDrive(speed, speed);
-	}
-	
-	public void turnLinear(double speed)
-	{
-		drive.tankDrive(-speed, speed);
-	}
     public void initDefaultCommand() 
     {
     	setDefaultCommand(new DriveCommand());
@@ -156,6 +147,11 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getPosition());
     	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     	
+    	RobotMap.turnP = SmartDashboard.getDouble("Turn P");
+    	RobotMap.turnI = SmartDashboard.getDouble("Turn I");
+    	RobotMap.turnD = SmartDashboard.getDouble("Turn D");
+    	RobotMap.turnF = SmartDashboard.getDouble("Turn F");
+    	
     }
     @SuppressWarnings("deprecation")
 	public void SmartInit()
@@ -174,11 +170,20 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putDouble("RBMotor Talon Current", RBMotor.getPosition());
     	SmartDashboard.putDouble("LBMotor Talon Current", LBMotor.getPosition());
     	SmartDashboard.putDouble("Distance Adjustment", RobotMap.DistanceAdjust);
+    	
+    	SmartDashboard.putDouble("Turn P", RobotMap.turnP);
+    	SmartDashboard.putDouble("Turn I", RobotMap.turnI);
+    	SmartDashboard.putDouble("Turn D", RobotMap.turnD);
+    	SmartDashboard.putDouble("Turn F", RobotMap.turnF);
     }
 	public void setVPercentBus() 
-	{
+	{		
 		RBMotor.changeControlMode(TalonControlMode.PercentVbus);
 		LBMotor.changeControlMode(TalonControlMode.PercentVbus);
+	}
+	public void calGyro() 
+	{
+		Gyro.calibrate();
 	}
 }
 

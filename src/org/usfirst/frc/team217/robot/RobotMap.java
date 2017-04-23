@@ -42,6 +42,7 @@ public class RobotMap {
 	
 	public static int controllerOnePort = 0;
 	public static int controllerTwoPort = 1;
+	public static double whiteLineDistance;
 	
 	public static final int X_AxisL = 0;
 	public static final int Y_AxisL = 1;
@@ -84,6 +85,7 @@ public class RobotMap {
 	
 	public static final int GearArmup = 0;
 	public static final int GearArmDown = 0;
+	public static final int GearArmRelease = 0;
 	
 	
 

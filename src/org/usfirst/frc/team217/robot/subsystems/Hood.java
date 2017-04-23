@@ -39,7 +39,7 @@ public class Hood extends PIDSubsystem
     {
     	this.setAbsoluteTolerance(5);
     	this.setOutputRange(-.1, .1);
-    	this.getPIDController().setPID(hoodF, hoodP, hoodI, hoodD);
+    	this.getPIDController().setPID(hoodP, hoodI, hoodD, hoodF);
     	this.getPIDController().enable();
     	this.setSetpoint(ENC);
     }

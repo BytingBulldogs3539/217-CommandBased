@@ -1,5 +1,7 @@
 package org.usfirst.frc.team217.robot.commands;
 
+import org.usfirst.frc.team217.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,30 +9,47 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GrabGear extends Command {
 
-    public GrabGear() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    private double seconds;
+	private double counter = 0;
+	private boolean end;
+
+	public GrabGear(double seconds) 
+    {
+		requires(Robot.Gearing);
+    	this.seconds = seconds;
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() 
+    {
+    	counter = 0;
+    	Robot.Gearing.setGearIntakePower(.75);
     }
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
+		this.counter++;
+    	if (counter >= this.seconds)
+    	{
+    		this.end = true;
+    	}
+    	else
+    	{
+    		this.end = false;
+    	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
+    protected boolean isFinished() 
+    {
+        return !Robot.OI.operBumperLeft.get() || this.end;
     }
 
-    // Called once after isFinished returns true
-    protected void end() {
+    protected void end() 
+    {
+    	Robot.Gearing.setGearIntakePower(0);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
+    	end();
     }
 }
