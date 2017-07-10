@@ -26,6 +26,10 @@ public class SwitchOmni extends Command {
     	{
     		Robot.DriveTrain.backOmni();
     	}
+    	else if (this.dirrection == "None"|| this.dirrection =="none");
+    	{
+    		Robot.DriveTrain.noOmni();
+    	}
     		
     }
 

@@ -70,6 +70,7 @@ public class DriveTrain extends Subsystem {
 		FrontSolenoid = new Solenoid(2);
 		
 		Gyro = new ADXRS450_Gyro();
+		drive = new RobotDrive(LFMotor, LBMotor, RFMotor, RBMotor);
 		
 		
 		
@@ -121,6 +122,11 @@ public class DriveTrain extends Subsystem {
 	{
 		BackSolenoid.set(true);
 		FrontSolenoid.set(true);
+	}
+	public void noOmni()
+	{
+		BackSolenoid.set(false);
+		BackSolenoid.set(false);
 	}
 	
 	public void zeroEncoders()
