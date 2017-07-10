@@ -6,6 +6,7 @@ import org.usfirst.frc.team217.robot.commands.GrabGear;
 import org.usfirst.frc.team217.robot.commands.ReleaseGear;
 import org.usfirst.frc.team217.robot.commands.ReleaseGearPos;
 import org.usfirst.frc.team217.robot.commands.ShootingCommand;
+import org.usfirst.frc.team217.robot.commands.SwitchOmni;
 import org.usfirst.frc.team217.robot.commands.TurretCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -31,6 +32,7 @@ public class OI
 	public JoystickButton operTriggerLeft = new JoystickButton(oper, 7);
 	
 	public JoystickButton driverBumperLeft = new JoystickButton(driver,5);
+	public JoystickButton driverBumperRight = new JoystickButton(driver,6);
 	
 	
 	public OI()
@@ -47,6 +49,7 @@ public class OI
 		
 		
 		//Driver
-		driverBumperLeft.whenPressed(new Climbing());
+		driverBumperLeft.whenPressed(new SwitchOmni("Both"));
+		driverBumperRight.whenPressed(new SwitchOmni("Both"));
 	}
 }
